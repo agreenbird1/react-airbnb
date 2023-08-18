@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom'
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">header</header>
-      <Outlet>
-        ssss
-      </Outlet>
-      <footer>footer</footer>
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   )
 }
