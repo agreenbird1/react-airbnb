@@ -39,18 +39,15 @@ const HeaderRight = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 5px 5px 5px 12px;
+    gap: 10px;
     background: transparent;
     margin-left: 8px;
     cursor: pointer;
     text-align: inherit;
     border: 1px solid #ddd;
     border-radius: 21px;
-    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
     cursor: pointer;
-    width: 77px;
-    &:hover {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-    }
+    ${(props) => props.theme.mixins.hoverShadow}
   }
   .menu {
     box-sizing: border-box;
