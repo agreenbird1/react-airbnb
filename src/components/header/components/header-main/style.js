@@ -10,8 +10,9 @@ const HeaderMain = styled.div`
     align-items: center;
     cursor: pointer;
     border: 1px solid #ddd;
-    border-radius: 21px;
+    border-radius: 40px;
     height: 48px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
     ${(props) => props.theme.mixins.hoverShadow}
     button {
       font-size: 14px;
