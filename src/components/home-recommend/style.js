@@ -14,6 +14,12 @@ const RecommendWrapper = styled.section`
     flex-wrap: wrap;
     gap: 20px;
   }
+  .show-all {
+    font-size: 20px;
+    font-weight: 600;
+    color: ${props => props.theme.fontColor};
+    cursor: pointer;
+  }
 `
 
 export default RecommendWrapper

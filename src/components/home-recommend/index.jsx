@@ -14,6 +14,7 @@ const HomeRecommend = memo((props) => {
           <RoomItem key={item.id} roomItem={item} width="calc(25% - 20px)" />
         ))}
       </ul>
+      <div className="show-all">查看全部 &gt;</div>
     </RecommendWrapper>
   )
 })

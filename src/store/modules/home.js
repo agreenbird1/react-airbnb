@@ -1,4 +1,4 @@
-import { getHomeRecommendList } from '@/services/home'
+import { getHomeRecommendList, getHomeHighScoreList } from '@/services/home'
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
 
@@ -13,10 +13,19 @@ export const getRecommendListAction = createAsyncThunk(
   }
 )
 
+export const getHighScoreList = createAsyncThunk(
+  'home/getHighScoreList',
+  async () => {
+    const res = await getHomeHighScoreList()
+    return res
+  }
+)
+
 const homeSlice = createSlice({
   name: 'home',
   initialState: {
     recommendList: {},
+    highScoreList: {},
   },
   reducers: {
     changeRecommendList(state, action) {
@@ -24,9 +33,13 @@ const homeSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getRecommendListAction.fulfilled, (state, action) => {
-      state.recommendList = action.payload
-    })
+    builder
+      .addCase(getRecommendListAction.fulfilled, (state, action) => {
+        state.recommendList = action.payload
+      })
+      .addCase(getHighScoreList.fulfilled, (state, action) => {
+        state.highScoreList = action.payload
+      })
   },
   // 即将被弃用的写法
   // extraReducers: {
