@@ -1,6 +1,7 @@
 const lightTheme = {
   fontColor: '#222222',
   secondaryFontColor: '#717171',
+  borderColor: '#dddddd',
   mixins: {
     hoverShadow: `
       transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
