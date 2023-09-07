@@ -6,6 +6,7 @@ import {
   getDiscountList,
 } from '@/store/modules/home'
 import HomeRecommend from './../../components/home-recommend/index'
+import HomeDiscount from './../../components/home-discount/index'
 import HomeWrapper from './style'
 
 const index = memo((props) => {
@@ -34,7 +35,7 @@ const index = memo((props) => {
     <HomeWrapper>
       <HomeRecommend recommendList={recommendList} />
       <HomeRecommend recommendList={highScoreList} />
-      <HomeRecommend recommendList={discountList} />
+      <HomeDiscount discountList={discountList} />
     </HomeWrapper>
   )
 })

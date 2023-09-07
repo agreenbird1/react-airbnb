@@ -41,7 +41,7 @@ const index = memo(() => {
       <div className='links-wrapper'>
         {links.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               <h3>{item.title}</h3>
               <ul>
                 {item.labels.map((label, index) => {
