@@ -1,4 +1,8 @@
-import { getHomeRecommendList, getHomeHighScoreList } from '@/services/home'
+import {
+  getHomeRecommendList,
+  getHomeHighScoreList,
+  getHomeDiscountList,
+} from '@/services/home'
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
 
@@ -6,8 +10,9 @@ const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
 export const getRecommendListAction = createAsyncThunk(
   'home/getRecommendList',
   async (...args) => {
-    // 参数中可以控制异步请求，比如 abort、rejectWithValue - 返回错误值
+    // 参数中可以控制异步请求，比如 abort、rejectWithValue，dispatch等 - 返回错误值
     // console.log(args)
+    // 如果是同步的简单thunk处理，可以直接在此处使用dispatch，异步的建议在extraReducer中处理
     const res = await getHomeRecommendList()
     return res
   }
@@ -21,16 +26,20 @@ export const getHighScoreList = createAsyncThunk(
   }
 )
 
+export const getDiscountList = createAsyncThunk(
+  'home/getDiscountList',
+  async () => {
+    const res = await getHomeDiscountList()
+    return res
+  }
+)
+
 const homeSlice = createSlice({
   name: 'home',
   initialState: {
     recommendList: {},
     highScoreList: {},
-  },
-  reducers: {
-    changeRecommendList(state, action) {
-      state.recommendList = action.payload
-    },
+    discountList: {},
   },
   extraReducers: (builder) => {
     builder
@@ -40,6 +49,9 @@ const homeSlice = createSlice({
       .addCase(getHighScoreList.fulfilled, (state, action) => {
         state.highScoreList = action.payload
       })
+      .addCase(getDiscountList.fulfilled, (state, action) => {
+        state.discountList = action.payload
+      })
   },
   // 即将被弃用的写法
   // extraReducers: {
@@ -48,7 +60,5 @@ const homeSlice = createSlice({
   //   },
   // },
 })
-
-export const { changeRecommendList } = homeSlice.actions
 
 export default homeSlice.reducer

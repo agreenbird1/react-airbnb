@@ -7,3 +7,7 @@ export const getHomeRecommendList = () => {
 export const getHomeHighScoreList = () => {
   return request.get("/home/highscore")
 }
+
+export const getHomeDiscountList = () => {
+  return request.get("/home/discount")
+}

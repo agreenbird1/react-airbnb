@@ -17,7 +17,7 @@ const RecommendWrapper = styled.section`
   .show-all {
     font-size: 20px;
     font-weight: 600;
-    color: ${props => props.theme.fontColor};
+    color: ${props => props.theme.highLightFontColor};
     cursor: pointer;
   }
 `
