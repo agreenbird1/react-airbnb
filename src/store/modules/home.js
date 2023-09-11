@@ -2,6 +2,7 @@ import {
   getHomeRecommendList,
   getHomeHighScoreList,
   getHomeDiscountList,
+  getHomeHot
 } from '@/services/home'
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
@@ -34,12 +35,22 @@ export const getDiscountList = createAsyncThunk(
   }
 )
 
+export const getHotList = createAsyncThunk(
+  'home/getHotList',
+  async () => {
+    const res = await getHomeHot()
+    return res
+  }
+
+)
+
 const homeSlice = createSlice({
   name: 'home',
   initialState: {
     recommendList: {},
     highScoreList: {},
     discountList: {},
+    hotList: {},
   },
   extraReducers: (builder) => {
     builder
@@ -51,6 +62,9 @@ const homeSlice = createSlice({
       })
       .addCase(getDiscountList.fulfilled, (state, action) => {
         state.discountList = action.payload
+      })
+      .addCase(getHotList.fulfilled, (state, action) => {
+        state.hotList = action.payload
       })
   },
   // 即将被弃用的写法

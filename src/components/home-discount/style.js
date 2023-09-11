@@ -68,9 +68,10 @@ const DiscountWrapper = styled.section`
       }
       .address-item {
         font-size: 18px;
+        flex-shrink: 0;
         color: ${(props) => props.theme.fontColor};
         border: 1px solid ${(props) => props.theme.borderColor};
-        padding: 8px 100px;
+        padding: 14px 50px;
         cursor: pointer;
       }
       .active {

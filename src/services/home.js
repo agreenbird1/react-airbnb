@@ -11,3 +11,7 @@ export const getHomeHighScoreList = () => {
 export const getHomeDiscountList = () => {
   return request.get("/home/discount")
 }
+
+export const getHomeHot = () => {
+  return request.get("/home/hotrecommenddest")
+}

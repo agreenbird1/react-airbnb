@@ -4,6 +4,7 @@ import {
   getRecommendListAction,
   getHighScoreList,
   getDiscountList,
+  getHotList
 } from '@/store/modules/home'
 import HomeRecommend from './../../components/home-recommend/index'
 import HomeDiscount from './../../components/home-discount/index'
@@ -23,12 +24,17 @@ const index = memo((props) => {
     (state) => state.home.discountList,
     shallowEqual
   )
+  const hotList = useSelector(
+    (state) => state.home.hotList,
+    shallowEqual
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getRecommendListAction())
     dispatch(getHighScoreList())
     dispatch(getDiscountList())
+    dispatch(getHotList())
   }, [dispatch])
 
   return (
@@ -36,6 +42,7 @@ const index = memo((props) => {
       <HomeRecommend recommendList={recommendList} />
       <HomeRecommend recommendList={highScoreList} />
       <HomeDiscount discountList={discountList} />
+      <HomeDiscount discountList={hotList} />
     </HomeWrapper>
   )
 })
