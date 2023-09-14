@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import DiscountWrapper from './style'
@@ -12,6 +13,7 @@ const HomeDiscount = memo((props) => {
   const [address, setAddress] = useState('')
   const [roomList, setRoomList] = useState([])
   const addressList = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (dest_address) {
@@ -62,7 +64,7 @@ const HomeDiscount = memo((props) => {
           <RoomItem key={item.id} roomItem={item} width="calc(25% - 20px)" />
         ))}
       </ul>
-      <div className="show-all">查看{address}的全部房源 &gt;</div>
+      <div className="show-all" onClick={() => navigate('/more')}>查看{address}的全部房源 &gt;</div>
     </DiscountWrapper>
   )
 })

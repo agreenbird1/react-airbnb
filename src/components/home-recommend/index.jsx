@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import RecommendWrapper from './style'
 import RoomItem from './../room-item/index'
 
 const HomeRecommend = memo((props) => {
   const { title, desc, list } = props.recommendList
-
+  const navigate = useNavigate()
   return (
     <RecommendWrapper>
       <h2>{title}</h2>
@@ -14,7 +15,7 @@ const HomeRecommend = memo((props) => {
           <RoomItem key={item.id} roomItem={item} width="calc(25% - 20px)" />
         ))}
       </ul>
-      <div className="show-all">查看全部 &gt;</div>
+      <div className="show-all" onClick={() => navigate('/more')}>查看全部 &gt;</div>
     </RecommendWrapper>
   )
 })

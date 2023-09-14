@@ -1,8 +1,13 @@
 import React, { memo } from 'react'
+import MoreWrapper from './style';
 
 const index = memo((props) => {
   return (
-    <div>More</div>
+    <MoreWrapper>
+      <section className='filter'>filter</section>
+      <section className="list">list</section>
+      <section className="pagination">pagination</section>
+    </MoreWrapper>
   )
 })
 
