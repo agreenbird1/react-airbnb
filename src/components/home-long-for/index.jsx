@@ -1,15 +1,22 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import HomeLongForWrapper from './style.js'
 
 const HomeLongFor = memo((props) => {
   const { list, title, subtitle } = props.list
-  console.log(list)
+  const listRef = useRef()
+
+  const moveList = (direction) => {
+    console.log(listRef.current.style);
+    listRef.current.style.transform = 'translateX(-200px)'
+  }
   return (
     <HomeLongForWrapper>
       <h2 className="long-for-title">{title}</h2>
       <p className="long-for-desc">{subtitle}</p>
       <div className="long-for-list-wrapper">
-        <ul className="long-for-list">
+        <div className="left-button" onClick={() => moveList(-1)}>&lt;</div>
+        <div className="right-button" onClick={() => moveList(1)}>&gt;</div>
+        <ul className="long-for-list" ref={listRef}>
           {list &&
             list.map((item) => (
               <li key={item.image_url} className="long-for-item">

@@ -11,8 +11,10 @@ const HomeLongForWrapper = styled.section`
   }
   .long-for-list-wrapper {
     position: relative;
-    &::before,
-    &::after {
+    width: 100%;
+    overflow: hidden;
+    .left-button,
+    .right-button {
       position: absolute;
       display: flex;
       align-items: center;
@@ -29,19 +31,16 @@ const HomeLongForWrapper = styled.section`
       color: ${(props) => props.theme.secondaryFontColor};
       z-index: 1;
     }
-    &::before {
-      content: '<';
-    }
-    &::after {
-      content: '>';
+
+    .right-button{
       right: 0;
     }
   }
   .long-for-list {
     position: relative;
+    transition: transform 2s ease;
     margin-top: 20px;
     display: flex;
-    overflow: hidden;
     gap: 20px;
   }
   .long-for-item {
