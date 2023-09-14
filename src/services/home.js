@@ -15,3 +15,7 @@ export const getHomeDiscountList = () => {
 export const getHomeHot = () => {
   return request.get("/home/hotrecommenddest")
 }
+
+export const getHomeLongForList = () => {
+  return request.get("/home/longfor")
+}

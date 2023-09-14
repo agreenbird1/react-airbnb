@@ -2,7 +2,8 @@ import {
   getHomeRecommendList,
   getHomeHighScoreList,
   getHomeDiscountList,
-  getHomeHot
+  getHomeHot,
+  getHomeLongForList
 } from '@/services/home'
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
@@ -35,6 +36,14 @@ export const getDiscountList = createAsyncThunk(
   }
 )
 
+export const getLongForList = createAsyncThunk(
+  'home/getLongForList',
+  async () => {
+    const res = await getHomeLongForList()
+    return res
+  }
+)
+
 export const getHotList = createAsyncThunk(
   'home/getHotList',
   async () => {
@@ -51,6 +60,7 @@ const homeSlice = createSlice({
     highScoreList: {},
     discountList: {},
     hotList: {},
+    longForList: {}
   },
   extraReducers: (builder) => {
     builder
@@ -65,6 +75,9 @@ const homeSlice = createSlice({
       })
       .addCase(getHotList.fulfilled, (state, action) => {
         state.hotList = action.payload
+      })
+      .addCase(getLongForList.fulfilled, (state, action) => {
+        state.longForList = action.payload
       })
   },
   // 即将被弃用的写法

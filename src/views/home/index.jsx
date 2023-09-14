@@ -4,10 +4,12 @@ import {
   getRecommendListAction,
   getHighScoreList,
   getDiscountList,
-  getHotList
+  getHotList,
+  getLongForList
 } from '@/store/modules/home'
 import HomeRecommend from './../../components/home-recommend/index'
 import HomeDiscount from './../../components/home-discount/index'
+import HomeLongFor from './../../components/home-long-for/index'
 import HomeWrapper from './style'
 
 const index = memo((props) => {
@@ -28,6 +30,10 @@ const index = memo((props) => {
     (state) => state.home.hotList,
     shallowEqual
   )
+  const longForList = useSelector(
+    (state) => state.home.longForList,
+    shallowEqual
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -35,6 +41,7 @@ const index = memo((props) => {
     dispatch(getHighScoreList())
     dispatch(getDiscountList())
     dispatch(getHotList())
+    dispatch(getLongForList())
   }, [dispatch])
 
   return (
@@ -43,6 +50,7 @@ const index = memo((props) => {
       <HomeRecommend recommendList={highScoreList} />
       <HomeDiscount discountList={discountList} />
       <HomeDiscount discountList={hotList} />
+      <HomeLongFor list={longForList} />
     </HomeWrapper>
   )
 })
