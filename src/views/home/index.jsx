@@ -7,9 +7,9 @@ import {
   getHotList,
   getLongForList
 } from '@/store/modules/home'
-import HomeRecommend from './../../components/home-recommend/index'
-import HomeDiscount from './../../components/home-discount/index'
-import HomeLongFor from './../../components/home-long-for/index'
+import HomeRecommend from './components/home-recommend/index'
+import HomeDiscount from './components/home-discount/index'
+import HomeLongFor from './components/home-long-for/index'
 import HomeWrapper from './style'
 
 const index = memo((props) => {

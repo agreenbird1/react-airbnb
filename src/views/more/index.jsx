@@ -1,12 +1,15 @@
 import React, { memo } from 'react'
 import MoreWrapper from './style';
+import MoreFilter from './components/filter/index';
+import MoreRooms from './components/rooms/index';
+import MorePagination from './components/pagination/index';
 
 const index = memo((props) => {
   return (
     <MoreWrapper>
-      <section className='filter'>filter</section>
-      <section className="list">list</section>
-      <section className="pagination">pagination</section>
+      <MoreFilter></MoreFilter>
+      <MoreRooms></MoreRooms>
+      <MorePagination></MorePagination>
     </MoreWrapper>
   )
 })
