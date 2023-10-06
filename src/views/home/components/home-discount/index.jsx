@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import DiscountWrapper from './style'
-import RoomItem from './../room-item/index'
+import RoomItem from '@/components/room-item/index'
 
 const HomeDiscount = memo((props) => {
   const { title, subtitle, dest_address, dest_list } = props.discountList

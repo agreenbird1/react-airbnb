@@ -9,7 +9,7 @@ const RoomItem = memo((props) => {
       {roomItem && (
         <>
           <div className="img-wrapper">
-            <img src={roomItem.picture_url} alt={roomItem.name} />
+            <img src={roomItem.picture_url} alt='' />
           </div>
           <div className="desc">
             {roomItem.verify_info.messages?.join(' · ')}

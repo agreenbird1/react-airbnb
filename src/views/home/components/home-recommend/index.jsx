@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import RecommendWrapper from './style'
-import RoomItem from './../room-item/index'
+import RoomItem from '@/components/room-item/index'
 
 const HomeRecommend = memo((props) => {
   const { title, desc, list } = props.recommendList

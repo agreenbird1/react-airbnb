@@ -6,7 +6,6 @@ const HomeLongFor = memo((props) => {
   const listRef = useRef()
 
   const moveList = (direction) => {
-    console.log(listRef.current.style);
     listRef.current.style.transform = 'translateX(-200px)'
   }
   return (
