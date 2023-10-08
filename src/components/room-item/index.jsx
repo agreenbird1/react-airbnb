@@ -1,15 +1,55 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import RoomItemWrapper from './style'
 import Rating from '@material-ui/lab/Rating'
+import Indicators from './../indicators/index'
+import classnames from 'classnames'
 
 const RoomItem = memo((props) => {
-  const { roomItem, width } = props
+  const { roomItem, width, roomItemClick } = props
+  const [selectIndex, setSelectIndex] = useState(0)
+  const toggleSelectIndex = (val, e) => {
+    e.stopPropagation()
+    let newIndex = selectIndex + val
+    if (newIndex < 0) {
+      newIndex = roomItem?.picture_urls?.length - 1
+    }
+    if (newIndex >= roomItem?.picture_urls?.length) {
+      newIndex = 0
+    }
+    setSelectIndex(newIndex)
+  }
+  const handleRoomClick = (roomItem) => {
+    roomItemClick && roomItemClick(roomItem)
+  }
   return (
-    <RoomItemWrapper style={{ width }}>
+    <RoomItemWrapper style={{ width }} onClick={() => handleRoomClick(roomItem)}>
       {roomItem && (
         <>
           <div className="img-wrapper">
-            <img src={roomItem.picture_url} alt='' />
+            <img src={roomItem.picture_url} alt="" />
+            {roomItem?.picture_urls && (
+              <>
+                <span className="left">
+                  <span onClick={(e) => toggleSelectIndex(-1, e)}>&lt;</span>
+                </span>
+                <span className="right">
+                  <span onClick={(e) => toggleSelectIndex(1, e)}>&gt;</span>
+                </span>
+                <div className="indicators">
+                  <Indicators selectIndex={selectIndex}>
+                    {roomItem?.picture_urls?.map((url, index) => (
+                      <div className="dot-wrapper" key={index}>
+                        <span
+                          className={classnames('dot', {
+                            active: selectIndex === index,
+                          })}
+                        ></span>
+                      </div>
+                    ))}
+                  </Indicators>
+                </div>
+              </>
+            )}
           </div>
           <div className="desc">
             {roomItem.verify_info.messages?.join(' · ')}
